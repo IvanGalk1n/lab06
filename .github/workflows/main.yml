@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
 
-  build_pack:
+  pack_linux:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -39,7 +39,7 @@ jobs:
           cd solver_application/build/
           cpack -G RPM 
         
-  pack2:
+  pack_macos:
     runs-on: macos-latest
     steps:
       - name: checkout
@@ -61,4 +61,22 @@ jobs:
         shell: bash
         run: |
           cd solver_application/build/
-          cpack -G WIX            
+          cpack -G WIX   
+          
+  pack_windows:
+    runs-on: windows-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        
+      - name: build
+        run: |
+          cd solver_application/
+          cmake -B build
+          cmake --build build
+          
+      - name: pack MSI
+        shell: bash
+        run: |
+          cd solver_application/build/
+          cpack -G WIX          
