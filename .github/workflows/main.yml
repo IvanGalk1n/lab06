@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
 
-  build:
+  build_pack:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -37,8 +37,20 @@ jobs:
         shell: bash
         run: |
           cd solver_application/build/
-          cpack -G RPM
-          
+          cpack -G RPM 
+        
+  pack2:
+    runs-on: macOS
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        
+      - name: build
+        run: |
+          cd solver_application/
+          cmake -B build
+          cmake --build build
+
       - name: pack DMG
         shell: bash
         run: |
@@ -49,4 +61,4 @@ jobs:
         shell: bash
         run: |
           cd solver_application/build/
-          cpack -G WIX          
+          cpack -G WIX            
