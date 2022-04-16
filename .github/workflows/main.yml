@@ -1,0 +1,76 @@
+name: packing
+on: [push]
+
+jobs:
+
+  pack_linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        
+      - name: build
+        run: |
+          cd solver_application/
+          cmake -B build
+          cmake --build build
+        
+      - name: pack TGZ
+        shell: bash
+        run: |
+          cd solver_application/build/
+          cpack -G TGZ
+          
+      - name: pack ZIP
+        shell: bash
+        run: |
+          cd solver_application/build/
+          cpack -G ZIP          
+          
+      - name: pack DEB
+        shell: bash
+        run: |
+          cd solver_application/build/
+          cpack -G DEB
+          
+      - name: pack RPM
+        shell: bash
+        run: |
+          cd solver_application/build/
+          cpack -G RPM 
+        
+  pack_macos:
+    runs-on: macos-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        
+      - name: build
+        run: |
+          cd solver_application/
+          cmake -B build
+          cmake --build build
+
+      - name: pack DMG
+        shell: bash
+        run: |
+          cd solver_application/build/
+          cpack -G DragNDrop
+          
+  pack_windows:
+    runs-on: windows-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        
+      - name: build
+        run: |
+          cd solver_application/
+          cmake -B build
+          cmake --build build
+          
+      - name: pack MSI
+        shell: bash
+        run: |
+          cd solver_application/build/
+          cpack -G WIX          
