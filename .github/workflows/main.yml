@@ -40,7 +40,7 @@ jobs:
           cpack -G RPM 
         
   pack2:
-    runs-on: macOS
+    runs-on: macos-latest
     steps:
       - name: checkout
         uses: actions/checkout@v3
