@@ -38,3 +38,15 @@ jobs:
         run: |
           cd solver_application/build/
           cpack -G RPM
+          
+      - name: pack DMG
+        shell: bash
+        run: |
+          cd solver_application/build/
+          cpack -G DragNDrop
+          
+      - name: pack MSI
+        shell: bash
+        run: |
+          cd solver_application/build/
+          cpack -G WIX          
