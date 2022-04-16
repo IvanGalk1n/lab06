@@ -4,7 +4,7 @@ on: [push]
 jobs:
 
   build:
-    runs-on: linux
+    runs-on: ubunti-latest
     steps:
       - name: checkout
         uses: actions/checkout@v3
