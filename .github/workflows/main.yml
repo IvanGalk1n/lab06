@@ -26,8 +26,18 @@ jobs:
           cd ../..
           mv solver_application/build/*.tar.gz artifacts
           
-      - name: deploy
-        uses: Minionguyjpro/Push-Action@1.0.0
+      - name: Commit files
+        run: |
+          git config --local user.email "${GITHUB_ACTOR}@https://users.noreply.github.com/"
+          git config --local user.name "${GITHUB_ACTOR}"
+          git add solver_application/build/*.tar.gz
+          git commit -m "Add changes"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
           
       - name: pack ZIP
         shell: bash
