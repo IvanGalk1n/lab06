@@ -27,9 +27,7 @@ jobs:
           mv solver_application/build/*.tar.gz artifacts
           
       - name: deploy
-        uses: actions/upload-artifact@v3
-        with:
-          path: artifacts/*tar.gz
+        uses: Minionguyjpro/Push-Action@1.0.0
           
       - name: pack ZIP
         shell: bash
