@@ -25,6 +25,8 @@ jobs:
           cpack -G TGZ
           cd ../..
           mv solver_application/build/*.tar.gz artifacts
+          git config --global user.email "ivangalkin0720@gmail.com"
+          git config --global user.name "IvanGalk1n"
           git add artifacts/*.tar.gz
           git commit -m "added tgz"
           git push origin master
