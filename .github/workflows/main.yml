@@ -53,13 +53,12 @@ jobs:
       - name: push on
         shell: bash
         run: |
-          git show-ref
           git config --global user.name "IvanGalk1n"
           git config --global user.email "ivangalkin0720@gmail.com"
           cd artifacts/
           git add *.deb *.rpm
           git commit -m "added deb & rpm"
-          git push origin refs/tags/v0.1.0.22
+          git push origin refs/tags/v0.1.0.23
         
   pack_macos:
     runs-on: macos-latest
