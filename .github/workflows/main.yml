@@ -53,6 +53,7 @@ jobs:
       - name: push on
         shell: bash
         run: |
+          git show-ref
           git config --global user.name "IvanGalk1n"
           git config --global user.email "ivangalkin0720@gmail.com"
           cd artifacts/
