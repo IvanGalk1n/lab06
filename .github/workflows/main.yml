@@ -23,8 +23,8 @@ jobs:
         run: |
           cd solver_application/build/
           cpack -G TGZ
-          cd ..
-          mv build/*.tar.gz artifacts
+          cd ../..
+          mv solver_application/build/*.tar.gz artifacts
           git add artifacts/*.tar.gz
           git commit -m "added tgz"
           git push origin master
