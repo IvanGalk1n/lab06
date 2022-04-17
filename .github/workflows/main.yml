@@ -26,35 +26,37 @@ jobs:
           cd ../..
           mv solver_application/build/*.tar.gz artifacts
           
-      - name: Commit & Push changes
-        uses: actions-js/push@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }
-          directory: artifacts/
-          
       - name: pack ZIP
         shell: bash
         run: |
           cd solver_application/build/
           cpack -G ZIP          
-          cd ..
-          mv build/*.zip artifacts
+          cd ../..
+          mv solver_application/build/*.zip artifacts
           
       - name: pack DEB
         shell: bash
         run: |
           cd solver_application/build/
           cpack -G DEB
-          cd ..
-          mv build/*.deb artifacts
+          cd ../..
+          mv solver_application/build/*.deb artifacts
           
       - name: pack RPM
         shell: bash
         run: |
           cd solver_application/build/
           cpack -G RPM
-          cd ..
-          mv build/*.rpm artifacts
+          cd ../..
+          mv solver_application/build/*.rpm artifacts
+          
+      - name: push
+        shell: bash
+        run: |
+          cd artifacts/
+          git add *.deb *.rpm
+          git commit -m "added deb & rpm"
+          git push origin master
         
   pack_macos:
     runs-on: macos-latest
@@ -73,8 +75,8 @@ jobs:
         run: |
           cd solver_application/build/
           cpack -G DragNDrop
-          cd ..
-          mv build/*.dmg artifacts
+          cd ../..
+          mv solver_application/build/*.dmg artifacts
           
   pack_windows:
     runs-on: windows-latest
@@ -93,5 +95,5 @@ jobs:
         run: |
           cd solver_application/build/
           cpack -G WIX
-          cd ..
-          mv build/*.msi artifacts
+          cd ../..
+          mv solver_application/build/*.msi artifacts
