@@ -25,11 +25,11 @@ jobs:
           cpack -G TGZ
           cd ../..
           mv solver_application/build/*.tar.gz artifacts
-          git config --global user.email "${GITHUB_ACTOR}@https://users.noreply.github.com/"
-          git config --global user.name "${GITHUB_ACTOR}"
-          git add artifacts/*.tar.gz
-          git commit -m "added tgz"
-          git push origin HEAD:master
+          
+      - name: deploy
+        uses: actions/upload-artifact@v3
+        with:
+          path: artifacts/*tar.gz
           
       - name: pack ZIP
         shell: bash
