@@ -25,6 +25,9 @@ jobs:
           cpack -G TGZ
           cd ..
           mv build/*.tar.gz artifacts
+          git add artifacts/*.tar.gz
+          git commit -m "added tgz"
+          git push origin master
           
       - name: pack ZIP
         shell: bash
