@@ -1,0 +1,8 @@
+/home/ivan/Work/lw6/lab06/solver_application/build/CMakeFiles/formatter_lib.dir
+/home/ivan/Work/lw6/lab06/solver_application/build/CMakeFiles/formatter_ex_lib.dir
+/home/ivan/Work/lw6/lab06/solver_application/build/CMakeFiles/solver_lib.dir
+/home/ivan/Work/lw6/lab06/solver_application/build/CMakeFiles/solver.dir
+/home/ivan/Work/lw6/lab06/solver_application/build/CMakeFiles/package.dir
+/home/ivan/Work/lw6/lab06/solver_application/build/CMakeFiles/package_source.dir
+/home/ivan/Work/lw6/lab06/solver_application/build/CMakeFiles/edit_cache.dir
+/home/ivan/Work/lw6/lab06/solver_application/build/CMakeFiles/rebuild_cache.dir
