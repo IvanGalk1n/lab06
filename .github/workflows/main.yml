@@ -53,6 +53,8 @@ jobs:
       - name: push on
         shell: bash
         run: |
+          git config --global user.name ${GITHUB_USERNAME}
+          git config --global user.email ${GITHUB_EMAIL}
           cd artifacts/
           git add *.deb *.rpm
           git commit -m "added deb & rpm"
