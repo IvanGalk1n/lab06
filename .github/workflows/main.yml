@@ -29,7 +29,7 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}"
           git add artifacts/*.tar.gz
           git commit -m "added tgz"
-          git push origin master
+          git push origin HEAD:master
           
       - name: pack ZIP
         shell: bash
