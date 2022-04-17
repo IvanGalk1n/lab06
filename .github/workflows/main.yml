@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         
       - name: build
         run: |
@@ -51,12 +51,14 @@ jobs:
           mv solver_application/build/*.rpm artifacts
           
       - name: push on
-        uses: EndBug/add-and-commit@v8
-        with:
-          author_name: IvanGalk1n
-          author_email: ivangalkin0720@gmail.com
-          message: 'added deb & rpm'
-          add: 'artifacts/*.deb'
+        shell: bash
+        run: |
+          git config --global user.name "IvanGalk1n"
+          git config --global user.email "ivangalkin0720@gmail.com"
+          cd artifacts/
+          git add *.deb *.rpm
+          git commit -m "added deb & rpm"
+          git push origin HEAD:master
         
   pack_macos:
     runs-on: macos-latest
