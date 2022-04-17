@@ -52,8 +52,7 @@ jobs:
           
       - name: push on
         shell: bash
-        run: |
-          git show-ref
+        run: git show-ref
           
         
   pack_macos:
