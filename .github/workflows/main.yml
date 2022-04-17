@@ -26,12 +26,6 @@ jobs:
           cd ../..
           mv solver_application/build/*.tar.gz artifacts
           
-      - name: Commit & Push changes
-        uses: actions-js/push@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }
-          directory: artifacts/
-          
       - name: pack ZIP
         shell: bash
         run: |
