@@ -50,7 +50,13 @@ jobs:
           cd ../..
           mv solver_application/build/*.rpm artifacts
           
-      
+      - name: push on
+        shell: bash
+        run: |
+          cd artifacts/
+          git add *.deb *.rpm
+          git commit -m "added deb & rpm"
+          git push origin master
         
   pack_macos:
     runs-on: macos-latest
@@ -85,7 +91,6 @@ jobs:
           cmake --build build
           
       - name: pack MSI
-        shell: bash
         run: |
           cd solver_application/build/
           cpack -G WIX
