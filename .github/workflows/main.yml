@@ -5,7 +5,7 @@ on:
       - "v*"
 
 jobs:
-
+  
   pack_linux:
     runs-on: ubuntu-latest
     steps:
@@ -23,24 +23,32 @@ jobs:
         run: |
           cd solver_application/build/
           cpack -G TGZ
+          cd ..
+          mv build/*.tar.gz artifacts
           
       - name: pack ZIP
         shell: bash
         run: |
           cd solver_application/build/
           cpack -G ZIP          
+          cd ..
+          mv build/*.zip artifacts
           
       - name: pack DEB
         shell: bash
         run: |
           cd solver_application/build/
           cpack -G DEB
+          cd ..
+          mv build/*.deb artifacts
           
       - name: pack RPM
         shell: bash
         run: |
           cd solver_application/build/
-          cpack -G RPM 
+          cpack -G RPM
+          cd ..
+          mv build/*.rpm artifacts
         
   pack_macos:
     runs-on: macos-latest
@@ -59,6 +67,8 @@ jobs:
         run: |
           cd solver_application/build/
           cpack -G DragNDrop
+          cd ..
+          mv build/*.dmg artifacts
           
   pack_windows:
     runs-on: windows-latest
@@ -76,4 +86,6 @@ jobs:
         shell: bash
         run: |
           cd solver_application/build/
-          cpack -G WIX          
+          cpack -G WIX
+          cd ..
+          mv build/*.msi artifacts
