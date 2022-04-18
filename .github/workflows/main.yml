@@ -118,4 +118,5 @@ jobs:
           cd artifacts/
           git add *msi
           git commit -m "added msi"
+          git pull origin HEAD:master
           git push --force origin HEAD:master
