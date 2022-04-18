@@ -90,6 +90,7 @@ jobs:
           cd artifacts/
           git add *dmg
           git commit -m "added dmg"
+          git pull origin HEAD:master
           git push --force origin HEAD:master
           
   pack_windows:
