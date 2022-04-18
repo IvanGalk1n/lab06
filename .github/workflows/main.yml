@@ -13,6 +13,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: build
+        shell: bash
         run: |
           cd solver_application/
           cmake -B build
@@ -67,6 +68,7 @@ jobs:
         uses: actions/checkout@v3
         
       - name: build
+        shell: bash
         run: |
           cd solver_application/
           cmake -B build
@@ -79,6 +81,16 @@ jobs:
           cpack -G DragNDrop
           cd ../..
           mv solver_application/build/*.dmg artifacts
+          
+      - name: push on
+        shell: bash
+        run: |
+          git config --global user.name "IvanGalk1n"
+          git config --global user.email "ivangalkin0720@gmail.com"
+          cd artifacts/
+          git add *dmg
+          git commit -m "added dmg"
+          git push origin HEAD:master
           
   pack_windows:
     runs-on: windows-latest
@@ -98,3 +110,12 @@ jobs:
           cpack -G WIX
           cd ../..
           mv solver_application/build/*.msi artifacts
+          
+      - name: push on
+        run: |
+          git config --global user.name "IvanGalk1n"
+          git config --global user.email "ivangalkin0720@gmail.com"
+          cd artifacts/
+          git add *msi
+          git commit -m "added msi"
+          git push origin HEAD:master
