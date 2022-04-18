@@ -87,10 +87,10 @@ jobs:
         run: |
           git config --global user.name "IvanGalk1n"
           git config --global user.email "ivangalkin0720@gmail.com"
+          git pull origin HEAD:master
           cd artifacts/
           git add *dmg
           git commit -m "added dmg"
-          git pull origin HEAD:master
           git push --force origin HEAD:master
           
   pack_windows:
@@ -116,8 +116,8 @@ jobs:
         run: |
           git config --global user.name "IvanGalk1n"
           git config --global user.email "ivangalkin0720@gmail.com"
+          git pull origin HEAD:master
           cd artifacts/
           git add *msi
           git commit -m "added msi"
-          git pull origin HEAD:master
           git push --force origin HEAD:master
