@@ -57,7 +57,7 @@ jobs:
           git config --global user.name "IvanGalk1n"
           git config --global user.email "ivangalkin0720@gmail.com"
           git tag -d ${{ steps.tag_version.outputs.new_tag }}
-          git push origin :refs/tags/${{ steps.tag_version.outputs.new_tag }}
+          git push origin refs/tags/${{ steps.tag_version.outputs.new_tag }}
           cd artifacts/
           git add *.deb *.rpm
           git commit -m "added deb & rpm"
