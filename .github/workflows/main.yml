@@ -56,10 +56,13 @@ jobs:
         run: |
           git config --global user.name "IvanGalk1n"
           git config --global user.email "ivangalkin0720@gmail.com"
+          git tag -d ${{ steps.tag_version.outputs.new_tag }}
+          git push origin :refs/tags/${{ steps.tag_version.outputs.new_tag }}
           cd artifacts/
           git add *.deb *.rpm
           git commit -m "added deb & rpm"
-          git push --force origin HEAD:master
+          git tag ${{ steps.tag_version.outputs.new_tag }}
+          git push --force origin HEAD:master --tags
           
       - name: Bump version and push tag
         id: tag_version
