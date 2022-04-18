@@ -59,8 +59,7 @@ jobs:
           cd artifacts/
           git add *.deb *.rpm
           git commit -m "added deb & rpm"
-          git rebase HEAD:master
-          git push origin HEAD:master
+          git push --force origin HEAD:master
         
   pack_macos:
     runs-on: macos-latest
@@ -91,8 +90,7 @@ jobs:
           cd artifacts/
           git add *dmg
           git commit -m "added dmg"
-          git rebase HEAD:master
-          git push origin HEAD:master
+          git push --force origin HEAD:master
           
   pack_windows:
     runs-on: windows-latest
@@ -120,5 +118,4 @@ jobs:
           cd artifacts/
           git add *msi
           git commit -m "added msi"
-          git rebase HEAD:master
-          git push origin HEAD:master
+          git push --force origin HEAD:master
